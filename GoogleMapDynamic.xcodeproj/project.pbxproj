@@ -25,6 +25,11 @@
 		3BD0C7F01E9325B400D1C762 /* PlaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD0C7EF1E9325B400D1C762 /* PlaceTableViewCell.swift */; };
 		3BDC1F021E91DB1900F0A28C /* DistanceLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDC1F011E91DB1900F0A28C /* DistanceLocation.swift */; };
 		968A22E4205178C8BFBD156B /* Pods_GoogleMapDynamic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9324B80533F0436083126CE1 /* Pods_GoogleMapDynamic.framework */; };
+		D20D19401EA8A5B300AF4365 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D193F1EA8A5B300AF4365 /* ContainerViewController.swift */; };
+		D20D19421EA8A5D500AF4365 /* GoogleMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D19411EA8A5D500AF4365 /* GoogleMapViewController.swift */; };
+		D20D19441EA8A5FD00AF4365 /* GooglePlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D19431EA8A5FD00AF4365 /* GooglePlaceViewController.swift */; };
+		D20D19461EA8A61600AF4365 /* DetailPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D19451EA8A61600AF4365 /* DetailPlaceViewController.swift */; };
+		D20D19481EA8CDA000AF4365 /* GooglePlaceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D19471EA8CDA000AF4365 /* GooglePlaceCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +54,11 @@
 		3BDC1F011E91DB1900F0A28C /* DistanceLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceLocation.swift; sourceTree = "<group>"; };
 		9324B80533F0436083126CE1 /* Pods_GoogleMapDynamic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoogleMapDynamic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9364E98AAB8FC3E0F6288389 /* Pods-GoogleMapDynamic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoogleMapDynamic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GoogleMapDynamic/Pods-GoogleMapDynamic.debug.xcconfig"; sourceTree = "<group>"; };
+		D20D193F1EA8A5B300AF4365 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
+		D20D19411EA8A5D500AF4365 /* GoogleMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapViewController.swift; sourceTree = "<group>"; };
+		D20D19431EA8A5FD00AF4365 /* GooglePlaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlaceViewController.swift; sourceTree = "<group>"; };
+		D20D19451EA8A61600AF4365 /* DetailPlaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailPlaceViewController.swift; sourceTree = "<group>"; };
+		D20D19471EA8CDA000AF4365 /* GooglePlaceCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlaceCollectionViewCell.swift; sourceTree = "<group>"; };
 		E285378529D01428195478DC /* Pods-GoogleMapDynamic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoogleMapDynamic.release.xcconfig"; path = "Pods/Target Support Files/Pods-GoogleMapDynamic/Pods-GoogleMapDynamic.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -99,10 +109,15 @@
 				3BD0C7EF1E9325B400D1C762 /* PlaceTableViewCell.swift */,
 				3B8AB3C91E9244FC003E8BC4 /* ListLocationTableViewCell.swift */,
 				3B8AB3CB1E924C64003E8BC4 /* ListLocationTableViewController.swift */,
+				D20D193F1EA8A5B300AF4365 /* ContainerViewController.swift */,
+				D20D19411EA8A5D500AF4365 /* GoogleMapViewController.swift */,
+				D20D19431EA8A5FD00AF4365 /* GooglePlaceViewController.swift */,
+				D20D19451EA8A61600AF4365 /* DetailPlaceViewController.swift */,
 				3B5ADB491E82302E00B819A0 /* Main.storyboard */,
 				3B2A2F8B1E7A1D8900F23B86 /* Assets.xcassets */,
 				3B2A2F8D1E7A1D8900F23B86 /* LaunchScreen.storyboard */,
 				3B2A2F901E7A1D8900F23B86 /* Info.plist */,
+				D20D19471EA8CDA000AF4365 /* GooglePlaceCollectionViewCell.swift */,
 			);
 			path = GoogleMapDynamic;
 			sourceTree = "<group>";
@@ -255,13 +270,18 @@
 			files = (
 				3B2A2FA21E7A8ED600F23B86 /* DetailLocationViewController.swift in Sources */,
 				3B88C5241E84A25500B8C29A /* MapLocation.swift in Sources */,
+				D20D19401EA8A5B300AF4365 /* ContainerViewController.swift in Sources */,
 				3BDC1F021E91DB1900F0A28C /* DistanceLocation.swift in Sources */,
 				3B2A2F9A1E7A50C200F23B86 /* MarkerLocation.swift in Sources */,
+				D20D19481EA8CDA000AF4365 /* GooglePlaceCollectionViewCell.swift in Sources */,
+				D20D19421EA8A5D500AF4365 /* GoogleMapViewController.swift in Sources */,
 				3BD0C7F01E9325B400D1C762 /* PlaceTableViewCell.swift in Sources */,
 				3B8AB3CC1E924C64003E8BC4 /* ListLocationTableViewController.swift in Sources */,
 				3B6C4D2E1E8E2E56008BEF5E /* CollectionViewCell.swift in Sources */,
+				D20D19461EA8A61600AF4365 /* DetailPlaceViewController.swift in Sources */,
 				3B2A2F871E7A1D8900F23B86 /* MapMarkerViewController.swift in Sources */,
 				3B2A2F851E7A1D8900F23B86 /* AppDelegate.swift in Sources */,
+				D20D19441EA8A5FD00AF4365 /* GooglePlaceViewController.swift in Sources */,
 				3B8AB3CA1E9244FC003E8BC4 /* ListLocationTableViewCell.swift in Sources */,
 				3B8AB3C61E920BB6003E8BC4 /* CurrentLocationViewController.swift in Sources */,
 				3B8AB3C81E9219D7003E8BC4 /* PlaceViewController.swift in Sources */,

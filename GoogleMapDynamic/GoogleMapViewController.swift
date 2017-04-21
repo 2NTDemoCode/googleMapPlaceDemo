@@ -1,8 +1,8 @@
 //
-//  CurrentLocationViewController.swift
+//  GoogleMapViewController.swift
 //  GoogleMapDynamic
 //
-//  Created by Minea Chem on 4/3/17.
+//  Created by mineachem on 4/20/17.
 //  Copyright © 2017 Minea Chem. All rights reserved.
 //
 
@@ -10,41 +10,19 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 
-class CurrentLocationViewController: UIViewController {
+class GoogleMapViewController: UIViewController {
 
-    @IBOutlet weak var googlemapview: GMSMapView!
     
+    @IBOutlet weak var googleMapView: GMSMapView!
+
     var locationManager = CLLocationManager()
     var currentLocation: CLLocation?
     var placesClient: GMSPlacesClient!
-    var zoomLevel: Float = 15.0
-    
-        // An array to hold the list of likely places.
+    // An array to hold the list of likely places.
     var likelyPlaces: [GMSPlace] = []
     
     // The currently selected place.
     var selectedPlace: GMSPlace?
-    
-    var userLatitude:Double?
-    var userLongtitude:Double?
-    
-    // Update the map once the user has made their selection.
-    @IBAction func unwindToMain(segue: UIStoryboardSegue) {
-        // Clear the map.
-        googlemapview.clear()
-        
-        // Add a marker to the map.
-        if selectedPlace != nil {
-            let marker = GMSMarker(position: (self.selectedPlace?.coordinate)!)
-            marker.title = selectedPlace?.name
-            marker.snippet = selectedPlace?.formattedAddress
-            marker.map = googlemapview
-            
-            print("selected Place:",selectedPlace!)
-        }
-        
-        listLikelyPlaces()
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,15 +36,20 @@ class CurrentLocationViewController: UIViewController {
         
         placesClient = GMSPlacesClient.shared()
         
-        
-        let camera = GMSCameraPosition.camera(withLatitude: -33.869405,longitude: 151.199,zoom: zoomLevel)
-          googlemapview.settings.myLocationButton = true
-        googlemapview.isMyLocationEnabled = true
-        googlemapview.camera = camera
-        googlemapview.isHidden = true
-        
+        googleMapView.settings.myLocationButton = true
+        print("Google Map viewDidLoad")
         listLikelyPlaces()
+       
     }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        print("Google Map viewDidAppear")
+    }
+    
+    
+    
     
     // Populate the array with the list of likely places.
     func listLikelyPlaces() {
@@ -90,25 +73,11 @@ class CurrentLocationViewController: UIViewController {
             }
         })
     }
-    
-    
-    
-    @IBAction func gotoDisplay(_ sender: UIButton) {
-        performSegue(withIdentifier: "segueToSelect", sender: self)
-    }
-    // Prepare the segue.
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "segueToSelect" {
-            if let nextViewController = segue.destination as? PlaceViewController {
-                nextViewController.likelyPlaces = likelyPlaces
-            }
-        }
-    }
+
+}
 
 
-   }
-
-extension CurrentLocationViewController: CLLocationManagerDelegate{
+extension GoogleMapViewController: CLLocationManagerDelegate {
     
     // Handle incoming location events.
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -117,13 +86,14 @@ extension CurrentLocationViewController: CLLocationManagerDelegate{
         
         let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude,
                                               longitude: location.coordinate.longitude,
-                                              zoom: zoomLevel)
-        
-        if googlemapview.isHidden {
-            googlemapview.isHidden = false
-            googlemapview.camera = camera
+                                              zoom: 17.0)
+        googleMapView.settings.myLocationButton = true
+        googleMapView.isMyLocationEnabled = true
+        if googleMapView.isHidden {
+            googleMapView.isHidden = false
+            googleMapView.camera = camera
         } else {
-            googlemapview.animate(to: camera)
+            googleMapView.animate(to: camera)
         }
         
         
@@ -138,7 +108,7 @@ extension CurrentLocationViewController: CLLocationManagerDelegate{
         case .denied:
             print("User denied access to location.")
             // Display the map using the default location.
-            googlemapview.isHidden = false
+            googleMapView.isHidden = false
         case .notDetermined:
             print("Location status not determined.")
         case .authorizedAlways: fallthrough
@@ -152,5 +122,5 @@ extension CurrentLocationViewController: CLLocationManagerDelegate{
         locationManager.stopUpdatingLocation()
         print("Error: \(error)")
     }
-    
+
 }

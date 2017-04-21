@@ -124,8 +124,8 @@ extension MapMarkerViewController: GMSAutocompleteViewControllerDelegate{
         marker.map = googleMap
         
         print("place name:\(place.name)")
-        print("place addrees\(place.formattedAddress)")
-        print("place attribution\(place.attributions)")
+        print("place addrees\(String(describing: place.formattedAddress))")
+        print("place attribution\(String(describing: place.attributions))")
         self.dismiss(animated: true, completion: nil) // dismiss after select place
         
         locationManager.stopUpdatingLocation()

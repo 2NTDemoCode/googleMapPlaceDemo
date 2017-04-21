@@ -110,7 +110,7 @@ extension DistanceLocation: CLLocationManagerDelegate {
                         let geometry = myPlace["geometry"].dictionary
                         print("geometry\(geometry!)")
                         let location = geometry?["location"]?.dictionary
-                        print("location\(location)")
+                        print("location\(String(describing: location))")
                         if let lat = location?["lat"] , let lng = location?["lng"]{
                             print("testing lat:\(lat),and \(lng)")
                             
@@ -147,7 +147,7 @@ extension DistanceLocation: CLLocationManagerDelegate {
                                     
                                     
                                 }else {
-                                    print("error\(error)")
+                                    print("error\(String(describing: error))")
                                 }
                                 // if condition address
                                 

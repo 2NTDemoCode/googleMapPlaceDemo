@@ -28,6 +28,9 @@ class HomeViewController: UIViewController {
         objectMapArray.append(objectMaps(imagesMap:
             UIImage(named: "currentPlace")!, titleMap: "currentPlace"))
         objectMapArray.append(objectMaps(imagesMap: UIImage(named: "duration_distance")!, titleMap: "duration and distance"))
+        objectMapArray.append(objectMaps(imagesMap: UIImage(named: "place_details")!, titleMap: "place detail"))
+        
+        
         collectionView.delegate = self
         collectionView.dataSource = self
         
@@ -66,6 +69,8 @@ extension HomeViewController: UICollectionViewDataSource{
 
         }else if indexPath.row == 3 {
             performSegue(withIdentifier: "distanceMap", sender: self)
+        }else if indexPath.row == 4 {
+            performSegue(withIdentifier: "container", sender: self)
         }
        
     }
