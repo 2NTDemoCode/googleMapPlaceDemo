@@ -69,8 +69,8 @@ class ContainerViewController: UIViewController {
             addViewControllerAsChildViewController(childViewController: googleMapViewController)
             
         }else {
-            removeViewControllerAsChildViewController(childViewController: googlePlaceViewController)
-            addViewControllerAsChildViewController(childViewController: googleMapViewController)
+            removeViewControllerAsChildViewController(childViewController: googleMapViewController)
+            addViewControllerAsChildViewController(childViewController: googlePlaceViewController)
         }
     }
     

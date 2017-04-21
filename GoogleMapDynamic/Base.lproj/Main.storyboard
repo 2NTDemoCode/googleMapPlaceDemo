@@ -144,10 +144,12 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JaR-lY-SSL" customClass="GMSMapView">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <subviews>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bum-x1-MFV">
-                                        <rect key="frame" x="0.0" y="392" width="414" height="260"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bum-x1-MFV">
+                                        <rect key="frame" x="0.0" y="442" width="414" height="244"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="244" id="mbN-Ch-GCh"/>
+                                        </constraints>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="20" id="9SJ-RJ-dV9">
                                             <size key="itemSize" width="390" height="170"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -155,8 +157,8 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="TyI-EU-xe8">
-                                                <rect key="frame" x="0.0" y="13" width="390" height="170"/>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="mapLocation" id="TyI-EU-xe8" customClass="GoogleMapLocationPlaceCollectionViewCell" customModule="GoogleMapDynamic" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="5" width="390" height="170"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                     <rect key="frame" x="0.0" y="0.0" width="390" height="170"/>
@@ -172,19 +174,19 @@
                                                                 <constraint firstAttribute="height" constant="30" id="Cqz-kD-hUR"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rgF-T9-myt">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rgF-T9-myt">
                                                             <rect key="frame" x="188" y="20" width="182" height="43"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ar-h3-hQ4">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="address" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ar-h3-hQ4">
                                                             <rect key="frame" x="188" y="64" width="182" height="43"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cs7-Yb-g1r">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="kilo" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cs7-Yb-g1r">
                                                             <rect key="frame" x="240" y="107" width="130" height="43"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="130" id="vQb-e6-aFy"/>
@@ -195,6 +197,7 @@
                                                         </label>
                                                     </subviews>
                                                 </view>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstItem="rgF-T9-myt" firstAttribute="leading" secondItem="0Ar-h3-hQ4" secondAttribute="leading" id="0aT-9q-dxK"/>
                                                     <constraint firstAttribute="bottomMargin" secondItem="22k-rb-Sql" secondAttribute="bottom" constant="12" id="5Xf-an-zuI"/>
@@ -214,11 +217,22 @@
                                                     <constraint firstItem="rgF-T9-myt" firstAttribute="top" secondItem="TyI-EU-xe8" secondAttribute="topMargin" constant="12" id="xTL-Ve-VcD"/>
                                                     <constraint firstItem="ar1-V2-Vtt" firstAttribute="leading" secondItem="TyI-EU-xe8" secondAttribute="leading" id="yof-yx-Hea"/>
                                                 </constraints>
+                                                <connections>
+                                                    <outlet property="addressLocation" destination="0Ar-h3-hQ4" id="19e-2C-vbC"/>
+                                                    <outlet property="kiloLocation" destination="cs7-Yb-g1r" id="dZ3-7u-UyJ"/>
+                                                    <outlet property="nameLocation" destination="rgF-T9-myt" id="Bxu-SZ-QeK"/>
+                                                    <outlet property="profileLocation" destination="ar1-V2-Vtt" id="1f5-il-8zM"/>
+                                                </connections>
                                             </collectionViewCell>
                                         </cells>
                                     </collectionView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="bum-x1-MFV" secondAttribute="trailing" id="3hl-6T-ica"/>
+                                    <constraint firstItem="bum-x1-MFV" firstAttribute="leading" secondItem="JaR-lY-SSL" secondAttribute="leading" id="qEO-yt-2OX"/>
+                                    <constraint firstAttribute="bottom" secondItem="bum-x1-MFV" secondAttribute="bottom" constant="50" id="vMs-kk-Ufk"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -232,6 +246,7 @@
                     <navigationItem key="navigationItem" title="Google Map" id="AMC-kh-Tie"/>
                     <connections>
                         <outlet property="googleMapView" destination="JaR-lY-SSL" id="dbc-M7-SuO"/>
+                        <outlet property="placeCollectionView" destination="bum-x1-MFV" id="LqN-BC-rxl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fGd-Po-98x" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -12,6 +12,7 @@ import GooglePlaces
 
 class GoogleMapViewController: UIViewController {
 
+    @IBOutlet weak var placeCollectionView: UICollectionView!
     
     @IBOutlet weak var googleMapView: GMSMapView!
 
@@ -27,6 +28,8 @@ class GoogleMapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        googleMapView.clear()
+       
         locationManager = CLLocationManager()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
@@ -37,7 +40,21 @@ class GoogleMapViewController: UIViewController {
         placesClient = GMSPlacesClient.shared()
         
         googleMapView.settings.myLocationButton = true
+         googleMapView.isMyLocationEnabled = true
         print("Google Map viewDidLoad")
+        
+        //MARK: - bring subview to in front of main view
+        googleMapView.bringSubview(toFront: placeCollectionView)
+        placeCollectionView.backgroundColor = UIColor.clear
+        
+
+       
+        
+        //MARK: -collection view delegate
+        placeCollectionView.delegate = self
+        placeCollectionView.dataSource = self
+        
+        
         listLikelyPlaces()
        
     }
@@ -72,6 +89,8 @@ class GoogleMapViewController: UIViewController {
                 }
             }
         })
+        
+        self.placeCollectionView.reloadData()
     }
 
 }
@@ -98,6 +117,7 @@ extension GoogleMapViewController: CLLocationManagerDelegate {
         
         
         listLikelyPlaces()
+        locationManager.stopUpdatingLocation()
     }
     
     // Handle authorization for the location manager.
@@ -113,6 +133,9 @@ extension GoogleMapViewController: CLLocationManagerDelegate {
             print("Location status not determined.")
         case .authorizedAlways: fallthrough
         case .authorizedWhenInUse:
+            locationManager.startUpdatingLocation()
+            googleMapView.settings.myLocationButton = true
+            googleMapView.isMyLocationEnabled = true
             print("Location status is OK.")
         }
     }
@@ -123,4 +146,38 @@ extension GoogleMapViewController: CLLocationManagerDelegate {
         print("Error: \(error)")
     }
 
+}
+
+
+extension GoogleMapViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return likelyPlaces.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cellGoogleMaps = collectionView.dequeueReusableCell(withReuseIdentifier: "mapLocation", for: indexPath) as! GoogleMapLocationPlaceCollectionViewCell
+        let collectionItemGoogleMap = likelyPlaces[indexPath.row]
+        cellGoogleMaps.loadFirstPhotoForPlace(placeID: collectionItemGoogleMap.placeID)
+        cellGoogleMaps.nameLocation.text = collectionItemGoogleMap.name
+        cellGoogleMaps.addressLocation.text = collectionItemGoogleMap.formattedAddress
+        cellGoogleMaps.kiloLocation.text = collectionItemGoogleMap.name
+        return cellGoogleMaps
+    }
+
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let detailCollectionView = likelyPlaces[indexPath.row]
+        //let detailPlaces: DetailPlaceViewController = DetailPlaceViewController()
+        let detailPlaces = self.storyboard!.instantiateViewController(withIdentifier: "DetailPlaceViewController") as! DetailPlaceViewController
+        print("row:\(detailCollectionView)")
+        detailPlaces.navigationBar.title = detailCollectionView.name
+        detailPlaces.loadFirstPhotoForPlace(placeID: detailCollectionView.placeID)
+        navigationController?.pushViewController(detailPlaces, animated: true)
+        
+    }
+
+    
 }
