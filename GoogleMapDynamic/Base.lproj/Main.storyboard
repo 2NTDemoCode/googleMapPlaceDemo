@@ -129,7 +129,7 @@
             </objects>
             <point key="canvasLocation" x="1117" y="432"/>
         </scene>
-        <!--Google Map View Controller-->
+        <!--Google Map-->
         <scene sceneID="Lts-2z-qd1">
             <objects>
                 <viewController storyboardIdentifier="GoogleMapViewController" id="DqS-sF-cmD" customClass="GoogleMapViewController" customModule="GoogleMapDynamic" customModuleProvider="target" sceneMemberID="viewController">
@@ -229,6 +229,7 @@
                             <constraint firstItem="JaR-lY-SSL" firstAttribute="bottom" secondItem="RNM-SE-8Ea" secondAttribute="top" id="aPR-x4-hwR"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Google Map" id="AMC-kh-Tie"/>
                     <connections>
                         <outlet property="googleMapView" destination="JaR-lY-SSL" id="dbc-M7-SuO"/>
                     </connections>
@@ -237,7 +238,7 @@
             </objects>
             <point key="canvasLocation" x="2057.971014492754" y="99.456521739130437"/>
         </scene>
-        <!--Google Place View Controller-->
+        <!--Google Places-->
         <scene sceneID="5nq-s1-jhw">
             <objects>
                 <viewController storyboardIdentifier="GooglePlaceViewController" id="6rd-OZ-bw2" customClass="GooglePlaceViewController" customModule="GoogleMapDynamic" customModuleProvider="target" sceneMemberID="viewController">
@@ -323,19 +324,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Google Places" id="0yK-in-NzG"/>
                     <connections>
                         <outlet property="collectionViewPlace" destination="iBI-Kc-x0A" id="jti-80-Ljo"/>
-                        <segue destination="hUo-Ch-RCm" kind="show" id="0rO-sF-ULD"/>
+                        <segue destination="hUo-Ch-RCm" kind="show" id="HNl-dr-CPd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SMo-td-90C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2057.971014492754" y="751.63043478260875"/>
         </scene>
-        <!--Detail Place View Controller-->
+        <!--Place Detail-->
         <scene sceneID="uIz-fC-ciq">
             <objects>
-                <viewController id="hUo-Ch-RCm" customClass="DetailPlaceViewController" customModule="GoogleMapDynamic" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailPlaceViewController" id="hUo-Ch-RCm" customClass="DetailPlaceViewController" customModule="GoogleMapDynamic" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Iel-ug-FvS"/>
                         <viewControllerLayoutGuide type="bottom" id="oUF-t1-ubV"/>
@@ -362,8 +364,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Place Detail" id="eyc-Xe-u2s"/>
                     <connections>
                         <outlet property="bannerPlace" destination="IFj-ZF-2dn" id="F1u-ol-G7o"/>
+                        <outlet property="navigationBar" destination="eyc-Xe-u2s" id="dWf-ia-1PT"/>
                         <outlet property="profilePlace" destination="Gyp-Co-ARN" id="ueq-fs-Nmi"/>
                     </connections>
                 </viewController>
@@ -439,7 +443,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="382"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4pA-qh-NXg" id="haF-yr-wqV">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="382"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="381.66666666666669"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KOb-ad-prD">
@@ -590,7 +594,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="272"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4CF-S8-dHD" id="JDy-pV-A8n">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="272"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="271.66666666666669"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="longtitude:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rmC-qP-a5M">

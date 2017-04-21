@@ -11,6 +11,7 @@ import GooglePlaces
 
 class DetailPlaceViewController: UIViewController {
 
+    @IBOutlet weak var navigationBar: UINavigationItem!
     @IBOutlet weak var bannerPlace: UIImageView!
     @IBOutlet weak var profilePlace: UIImageView!
     
@@ -18,10 +19,9 @@ class DetailPlaceViewController: UIViewController {
         super.viewDidLoad()
 
         
+        print("Detail Place")
     }
     
-    
-
     
     func loadFirstPhotoForPlace(placeID: String) {
         GMSPlacesClient.shared().lookUpPhotos(forPlaceID: placeID) { (photos, error) -> Void in
@@ -43,8 +43,8 @@ class DetailPlaceViewController: UIViewController {
                 // TODO: handle the error.
                 print("Error: \(error.localizedDescription)")
             } else {
-                self.bannerPlace.image = photo;
-                self.profilePlace.image = photo;
+                self.bannerPlace?.image = photo;
+                self.profilePlace?.image = photo;
             }
         })
     }

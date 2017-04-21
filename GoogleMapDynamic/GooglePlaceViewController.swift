@@ -87,10 +87,14 @@ extension GooglePlaceViewController: UICollectionViewDelegate, UICollectionViewD
 
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         let detailCollectionView = likelyPlaces[indexPath.row]
-        let detailPlaces = DetailPlaceViewController ()
+        //let detailPlaces: DetailPlaceViewController = DetailPlaceViewController()
+        let detailPlaces = self.storyboard!.instantiateViewController(withIdentifier: "DetailPlaceViewController") as! DetailPlaceViewController
+        print("row:\(detailCollectionView)")
+         detailPlaces.navigationBar.title = detailCollectionView.name
         detailPlaces.loadFirstPhotoForPlace(placeID: detailCollectionView.placeID)
-        self.navigationController?.pushViewController(detailPlaces, animated: true)
+        navigationController?.pushViewController(detailPlaces, animated: true)
     
     }
 

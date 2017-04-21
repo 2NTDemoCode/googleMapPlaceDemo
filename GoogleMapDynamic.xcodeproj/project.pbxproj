@@ -113,11 +113,11 @@
 				D20D19411EA8A5D500AF4365 /* GoogleMapViewController.swift */,
 				D20D19431EA8A5FD00AF4365 /* GooglePlaceViewController.swift */,
 				D20D19451EA8A61600AF4365 /* DetailPlaceViewController.swift */,
+				D20D19471EA8CDA000AF4365 /* GooglePlaceCollectionViewCell.swift */,
 				3B5ADB491E82302E00B819A0 /* Main.storyboard */,
 				3B2A2F8B1E7A1D8900F23B86 /* Assets.xcassets */,
 				3B2A2F8D1E7A1D8900F23B86 /* LaunchScreen.storyboard */,
 				3B2A2F901E7A1D8900F23B86 /* Info.plist */,
-				D20D19471EA8CDA000AF4365 /* GooglePlaceCollectionViewCell.swift */,
 			);
 			path = GoogleMapDynamic;
 			sourceTree = "<group>";
