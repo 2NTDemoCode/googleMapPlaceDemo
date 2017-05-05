@@ -14,6 +14,8 @@ class MapLocation: NSObject {
     
     let baseURLGeocode = "https://maps.googleapis.com/maps/api/geocode/json?"
     let baseURLDistanceMatric = "https://maps.googleapis.com/maps/api/distancematrix/json?"
+    let textSearchURL = "https://maps.googleapis.com/maps/api/place/textsearch/json?"
+    let nearbyURL = "https://maps.googleapis.com/maps/api/place/radarsearch/json?"
     
 //    func geocodeAddress(lat:Double!,lng:Double!){
 //        if (lat != nil && lng != nil){

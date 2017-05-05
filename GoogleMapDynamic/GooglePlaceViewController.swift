@@ -94,6 +94,11 @@ extension GooglePlaceViewController: UICollectionViewDelegate, UICollectionViewD
         print("row:\(detailCollectionView)")
          detailPlaces.navigationBar.title = detailCollectionView.name
         detailPlaces.loadFirstPhotoForPlace(placeID: detailCollectionView.placeID)
+        detailPlaces.name = detailCollectionView.name
+        detailPlaces.address = detailCollectionView.formattedAddress
+        detailPlaces.phone = detailCollectionView.phoneNumber
+        detailPlaces.rate = detailCollectionView.rating
+        detailPlaces.types = detailCollectionView.types
         navigationController?.pushViewController(detailPlaces, animated: true)
     
     }

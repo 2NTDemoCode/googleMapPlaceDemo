@@ -14,12 +14,30 @@ class DetailPlaceViewController: UIViewController {
     @IBOutlet weak var navigationBar: UINavigationItem!
     @IBOutlet weak var bannerPlace: UIImageView!
     @IBOutlet weak var profilePlace: UIImageView!
+    @IBOutlet weak var namePlaces: UILabel!
+    @IBOutlet weak var addressPlaces: UILabel!
+    @IBOutlet weak var phonePlaces: UILabel!
+    @IBOutlet weak var ratePlaces: UILabel!
+    @IBOutlet weak var typesPlaces: UILabel!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    var name: String?
+    var address: String?
+    var phone: String?
+    var rate: Float?
+    var types: [String]?
 
+    
+    
+       override func viewDidLoad() {
+        super.viewDidLoad()
+         print("Detail Place")
         
-        print("Detail Place")
+        namePlaces.text = name
+        addressPlaces.text = address
+        phonePlaces.text = phone
+        ratePlaces.text = String(describing: rate)
+        typesPlaces.text = types?.last
+       
     }
     
     
