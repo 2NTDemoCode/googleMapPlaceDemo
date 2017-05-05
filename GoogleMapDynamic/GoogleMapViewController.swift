@@ -96,8 +96,10 @@ class GoogleMapViewController: UIViewController, GMUClusterManagerDelegate,GMSMa
     }
     
     func showCollectionView() {
+        self.placeCollectionView.reloadData()
             googleMapView.bringSubview(toFront: placeCollectionView)
             placeCollectionView.backgroundColor = UIColor.clear
+        
     }
    
     
@@ -160,8 +162,9 @@ class GoogleMapViewController: UIViewController, GMUClusterManagerDelegate,GMSMa
                     self.clusterManager.setDelegate(self, mapDelegate: self)
                 }
             }
+            self.placeCollectionView.reloadData()
         })
-      //  self.placeCollectionView.reloadData()
+      //
         
     }
     
@@ -170,7 +173,7 @@ class GoogleMapViewController: UIViewController, GMUClusterManagerDelegate,GMSMa
     // Randomly generates cluster items within some extent of the camera and
     /// adds them to the cluster manager.
     private func generateClusterItems() {
-        let extent = 0.01
+        let extent = 0.02
          kClusterItemCount = markers.count
         
         for index in 1...kClusterItemCount {
@@ -213,29 +216,74 @@ class GoogleMapViewController: UIViewController, GMUClusterManagerDelegate,GMSMa
         let newCamera = GMSCameraPosition.camera(withLatitude: cluster.position.latitude, longitude: cluster.position.longitude, zoom: 14)
         self.googleMapView.animate(to: newCamera)
         
-//        var placeCluster = likelyPlaces.last!
-        likelyPlaces.removeAll()
-        for collect in cluster.items {
-            let placeCluster = likelyPlaces.last!
-                self.kCameraLatitude = collect.position.latitude
-                self.kCameraLongitude = collect.position.longitude
-            
-                self.kCameraLatitude = placeCluster.coordinate.latitude
-                self.kCameraLongitude = placeCluster.coordinate.longitude
-            
-                var postionsCluster = CLLocation(latitude: kCameraLatitude!, longitude: kCameraLongitude!)
-                let positionsplace = CLLocation(latitude: kCameraLatitude!, longitude: kCameraLatitude!)
-                
-                postionsCluster = positionsplace
-                 self.likelyPlaces.append(placeCluster)
-            
-            print("placeCluster",placeCluster)
-            
-        }
-        self.placeCollectionView.reloadData()
-        showCollectionView()
         
-       // showCollectionView()
+        likelyPlaces.removeAll()
+        placesClient.currentPlace(callback: { (placeLikelihoods, error) -> Void in
+            if let error = error {
+                // TODO: Handle the error.
+                print("Current Place error: \(error.localizedDescription)")
+                return
+            }
+            
+            // Get likely places and add to the list.
+            
+            if let likelihoodList = placeLikelihoods {
+                
+                var places:[GMSPlace] = []
+                
+                for likelihood in likelihoodList.likelihoods {
+                    let place = likelihood.place
+                    places.append(place)
+                }
+                
+                for (index,collection) in cluster.items.enumerated() {
+                    
+                    let clusters = collection
+                    
+                    var placesCollection = CLLocation(latitude: places[index].coordinate.latitude, longitude: places[index].coordinate.longitude)
+                    let markerCluser = CLLocation(latitude: clusters.position.latitude, longitude: clusters.position.longitude)
+                    placesCollection = markerCluser
+                    self.likelyPlaces.append(places[index])
+                    //                            print("marker:\(markerCluser.coordinate)")
+                    print("place:\(places)")
+                    
+                    
+                }
+
+                
+            }
+            
+            self.showCollectionView()
+            
+        })
+        
+        
+//        selectedPlace = likelyPlaces.popLast()
+//       self.likelyPlaces.removeAll()
+//        
+//    for collect in cluster.items {
+//        
+//            let place = selectedPlace
+//            
+////                self.kCameraLatitude = collect.position.latitude
+////                self.kCameraLongitude = collect.position.longitude
+////            
+////                self.kCameraLatitude = place?.coordinate.latitude
+////                self.kCameraLongitude = place?.coordinate.longitude
+//        
+//                var postionsCluster = CLLocation(latitude: collect.position.latitude, longitude: collect.position.longitude)
+//                let positionsplace = CLLocation(latitude: (place.coordinate.latitude), longitude: (place.coordinate.longitude))
+//                
+//                postionsCluster = positionsplace
+//                 self.likelyPlaces.append(place)
+//            
+//            print("placeCluster",place)
+//        
+//        
+//        self.placeCollectionView.reloadData()
+//         showCollectionView()
+//        }
+//       
         
         return false
     }
@@ -255,7 +303,6 @@ class GoogleMapViewController: UIViewController, GMUClusterManagerDelegate,GMSMa
             print("marker",marker)
           
         }else {
-            
             print("tap cluster","no")
         }
 
