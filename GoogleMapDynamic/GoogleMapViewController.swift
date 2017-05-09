@@ -88,21 +88,27 @@ class GoogleMapViewController: UIViewController, GMUClusterManagerDelegate,GMSMa
     func hideCollectionView(){
         //MARK: - bring subview to in front of main view
         if placeCollectionView.isHidden == true {
-            placeCollectionView.bringSubview(toFront: googleMapView)
-            placeCollectionView.backgroundColor = UIColor.clear
-            
+            placeCollectionView.removeFromSuperview()
         }
 
     }
     
     func showCollectionView() {
-        self.placeCollectionView.reloadData()
-            googleMapView.bringSubview(toFront: placeCollectionView)
-            placeCollectionView.backgroundColor = UIColor.clear
         
+        do {
+            self.placeCollectionView.reloadData()
+            
+            if googleMapView.settings.myLocationButton == true {
+                googleMapView.bringSubview(toFront: placeCollectionView)
+                placeCollectionView.backgroundColor = UIColor.clear
+                 print("my button")
+            }
+            
+        
+        } catch {
+            print("my error")
+        }
     }
-   
-    
     
     
     
@@ -173,7 +179,7 @@ class GoogleMapViewController: UIViewController, GMUClusterManagerDelegate,GMSMa
     // Randomly generates cluster items within some extent of the camera and
     /// adds them to the cluster manager.
     private func generateClusterItems() {
-        let extent = 0.02
+        let extent = 0.01
          kClusterItemCount = markers.count
         
         for index in 1...kClusterItemCount {
@@ -253,37 +259,10 @@ class GoogleMapViewController: UIViewController, GMUClusterManagerDelegate,GMSMa
                 
             }
             
-            self.showCollectionView()
+            
+                self.showCollectionView()
             
         })
-        
-        
-//        selectedPlace = likelyPlaces.popLast()
-//       self.likelyPlaces.removeAll()
-//        
-//    for collect in cluster.items {
-//        
-//            let place = selectedPlace
-//            
-////                self.kCameraLatitude = collect.position.latitude
-////                self.kCameraLongitude = collect.position.longitude
-////            
-////                self.kCameraLatitude = place?.coordinate.latitude
-////                self.kCameraLongitude = place?.coordinate.longitude
-//        
-//                var postionsCluster = CLLocation(latitude: collect.position.latitude, longitude: collect.position.longitude)
-//                let positionsplace = CLLocation(latitude: (place.coordinate.latitude), longitude: (place.coordinate.longitude))
-//                
-//                postionsCluster = positionsplace
-//                 self.likelyPlaces.append(place)
-//            
-//            print("placeCluster",place)
-//        
-//        
-//        self.placeCollectionView.reloadData()
-//         showCollectionView()
-//        }
-//       
         
         return false
     }
